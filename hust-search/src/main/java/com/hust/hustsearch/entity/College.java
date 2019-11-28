@@ -25,6 +25,15 @@ public class College {
     private String img;
     private String introductionLink;
     private int wid;
+    private String englishName;
+
+    public String getEnglishName() {
+        return englishName;
+    }
+
+    public void setEnglishName(String englishName) {
+        this.englishName = englishName;
+    }
 
     @Id
     public int getId() {
@@ -134,8 +143,9 @@ public class College {
                 ", index='" + index + '\'' +
                 ", introduction='" + introduction + '\'' +
                 ", img='" + img + '\'' +
-                ", introLink='" + introductionLink + '\'' +
+                ", introductionLink='" + introductionLink + '\'' +
                 ", wid=" + wid +
+                ", englishName='" + englishName + '\'' +
                 '}';
     }
 }

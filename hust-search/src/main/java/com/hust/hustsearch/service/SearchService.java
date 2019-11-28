@@ -47,6 +47,7 @@ public class SearchService implements ISearchService {
             document.setField("college_introduction", college.getIntroduction());
             document.setField("college_name", college.getName());
             document.setField("college_introduction_link", college.getIntroductionLink());
+            document.setField("college_english_name",college.getEnglishName());
             try {
                 solrClient.add(document);
             } catch (SolrServerException | IOException e) {
@@ -100,6 +101,9 @@ public class SearchService implements ISearchService {
                 }
                 if (list.get(i).getFieldValue("college_phone") != null) {
                     college.setPhone(list.get(i).getFieldValue("college_phone").toString());
+                }
+                if(list.get(i).getFieldValue("college_english_name")!=null){
+                    college.setEnglishName(list.get(i).getFieldValue("college_english_name").toString());
                 }
             }
         } catch (SolrServerException e) {
