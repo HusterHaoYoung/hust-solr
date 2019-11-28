@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <meta content="IE=edge" http-equiv="X-UA-Compatible">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="renderer" content="webkit">
+    <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+    <base href="./"/>
+    <link rel="stylesheet" href="../css/style.css"/>
+</head>
+<body>
+
+<!--nav-->
+<div class="wrap">
+    <div class="nav_wrap">
+        <div class="logo2">
+            <img src="../img/logo2.png"/>
+        </div>
+        <ul class="nav">
+            <li class="other  ons">
+                <a href="#" class="icon1">主<span></span>页</a>
+            </li>
+            <li class="other">
+                <a href="#" class="icon2">院<span></span>系</a>
+            </li>
+            <li>
+                <a href="#" class=" icon3">联系我们</a>
+            </li>
+            <li>
+                <a href="#" class="icon4">关于主页</a>
+            </li>
+        </ul>
+        <div class="visit">
+            <p class="all"><span>总访问量</span>：1042.50万</p>
+            <p class="today">今日访问量：2222223376</p>
+        </div>
+    </div>
+</div>
+<!--right-->
+<div class="cont">
+    <div class="search2">
+        <form action="searchByKeyWord" method="post">
+            <input type="text" name="keyWord" class="inp" th:placeholder="${college.getName()}">
+			<input type="submit" name="submit" value="点击搜索" class="btn">
+        </form>
+    </div>
+    <!--研究团队-->
+    <div class="research intro">
+        <div class="item">
+            <div class="item_top item_top2">
+                <div class="item_pic">
+                    <img width="300" src="../img/pic2.png" th:src="${college.getImg()}"/>
+                </div>
+                <div class="item_topic">
+                    <h1 th:text="${college.name}"></h1>
+                    <p>School of Computer Science & Technology,HUST</p>
+                    <ul>
+                        <li class="colle1">
+                            <h6>电话</h6>
+                            <span th:text="${college.getPhone()}"></span>
+                        </li>
+                        <li class="colle2">
+                            <h6>邮箱</h6>
+                            <span th:text="${college.getEmail()}"></span>
+                        </li>
+                        <li class="colle3">
+                            <h6>地址</h6>
+                            <span th:text="${college.getAddress()}"></span>
+                        </li>
+                        <li class="colle4">
+                            <h6>官网</h6>
+                            <span th:text="${college.getIndex()}"></span>
+                        </li>
+                        <li class="colle5 coll_last">
+                            <h6>招生专业</h6>
+                            <ul class="zhao">
+                                <li>
+                                    <img src="../img/z1.png"/>
+                                </li>
+                                <li>
+                                    <img src="../img/z2.png"/>
+                                </li>
+                            </ul>
+                    </ul>
+                </div>
+                <div class="clear"></div>
+            </div>
+            <div class="clear"></div>
+            <div class="item_bottom item_bottom2">
+                <div class="titles">
+                    学院简介
+                </div>
+                <div class="abstract">
+                    <p class="con" th:text="${college.getIntroduction().substring(0,250)}"></p>
+                    <a  th:href="@{${college.getIntroductionLink()}}"> 阅读详情</a>
+                </div>
+                <div class="picScroll-left picScroll-left2">
+                    <div class="hd">
+                        <a class="next"></a>
+                        <a class="prev"></a>
+                    </div>
+                    <div class="bd">
+                        <ul class="picList">
+                            <li>
+                                <div class="pic"><a href="#" target="_blank"><img src="../img/shi1.png"/></a></div>
+                                <div class="title">
+                                    <a href="#" target="_blank">
+                                        <h6>陈汉华</h6>
+                                        <p>教授&nbsp;&nbsp;博士生导师</p>
+                                    </a>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="pic"><a href="#" target="_blank"><img src="../img/shi2.png"/></a></div>
+                                <div class="title">
+                                    <a href="#" target="_blank">
+                                        <h6>陈敏</h6>
+                                        <p>教授&nbsp;&nbsp;博士生导师</p>
+                                    </a>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="pic"><a href="#" target="_blank"><img src="../img/shi3.png"/></a></div>
+                                <div class="title">
+                                    <a href="#" target="_blank">
+                                        <h6>代炜琦</h6>
+                                        <p>讲师&nbsp;&nbsp;硕士生导师</p>
+                                    </a>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="pic"><a href="#" target="_blank"><img src="../img/shi4.png"/></a></div>
+                                <div class="title">
+                                    <a href="#" target="_blank">
+                                        <h6>丁晓锋</h6>
+                                        <p>副教授&nbsp;&nbsp;博士生导师</p>
+                                    </a>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="pic"><a href="#" target="_blank"><img src="../img/shi5.png"/></a></div>
+                                <div class="title">
+                                    <a href="#" target="_blank">
+                                        <h6>辜希武</h6>
+                                        <p>副研究员&nbsp;&nbsp;硕士生导师</p>
+                                    </a>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="pic"><a href="#" target="_blank"><img src="../img/shi6.png"/></a></div>
+                                <div class="title">
+                                    <a href="#" target="_blank">
+                                        <h6>顾琳</h6>
+                                        <p>讲师 &nbsp;&nbsp;硕士生导师</p>
+                                    </a>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="pic"><a href="#" target="_blank"><img src="../img/shi6.png"/></a></div>
+                                <div class="title">
+                                    <a href="#" target="_blank">
+                                        <h6>顾琳</h6>
+                                        <p>讲师 &nbsp;&nbsp;硕士生导师</p>
+                                    </a>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="pic"><a href="#" target="_blank"><img src="../img/shi6.png"/></a></div>
+                                <div class="title">
+                                    <a href="#" target="_blank">
+                                        <h6>顾琳</h6>
+                                        <p>讲师 &nbsp;&nbsp;硕士生导师</p>
+                                    </a>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="pic"><a href="#" target="_blank"><img src="../img/shi6.png"/></a></div>
+                                <div class="title">
+                                    <a href="#" target="_blank">
+                                        <h6>顾琳</h6>
+                                        <p>讲师 &nbsp;&nbsp;硕士生导师</p>
+                                    </a>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="pic"><a href="#" target="_blank"><img src="../img/shi6.png"/></a></div>
+                                <div class="title">
+                                    <a href="#" target="_blank">
+                                        <h6>顾琳</h6>
+                                        <p>讲师 &nbsp;&nbsp;硕士生导师</p>
+                                    </a>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--分数线-->
+    <div class="fen">
+        <div class="titles">
+            各省历年招生分数线
+        </div>
+        <ul class="sel">
+            <li>
+                <h5>省/市</h5>
+                <select name="jumpMenu" id="jumpMenu"
+                        onchange="if(this.value.length>0)window.open(this.value,'_blank');">
+                    <option value="">北京市</option>
+                    <option value="">北京市</option>
+                    <option value="">北京市</option>
+                    <option value="">北京市</option>
+                </select>
+            </li>
+            <li class="li2">
+                <h5>科别</h5>
+                <select name="jumpMenu" id="jumpMenu"
+                        onchange="if(this.value.length>0)window.open(this.value,'_blank');">
+                    <option value="">理工</option>
+                    <option value="">理工</option>
+                    <option value="">理工</option>
+                    <option value="">理工</option>
+                </select>
+            </li>
+            <li class="li2">
+                <h5>年份</h5>
+                <select name="jumpMenu" id="jumpMenu"
+                        onchange="if(this.value.length>0)window.open(this.value,'_blank');">
+                    <option value="">2018</option>
+                    <option value="">2018</option>
+                    <option value="">2018</option>
+                    <option value="">2018</option>
+                </select>
+            </li>
+
+            <li class="clear"></li>
+        </ul>
+        <form action="" method="post" class="formed">
+            <input src="submit" value="点击查询"/>
+        </form>
+        <div class="clear"></div>
+        <table border="0" width="1420" cellspacing="0" cellpadding="0" class="tabed">
+            <tr class="ths">
+                <th class="zhuan1">学院专业</th>
+                <th class="zhuan2">年份</th>
+                <th class="zhuan2">省/市</th>
+                <th class="zhuan2">最低录取分数线</th>
+                <th class="zhuan3">备注</th>
+            </tr>
+            <tr>
+                <td>计算机科学技术（计算机卓越计划实验班）</td>
+                <td>2018</td>
+                <td>北京市</td>
+                <td>668</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>计算机类</td>
+                <td>2018</td>
+                <td>北京市</td>
+                <td>659</td>
+                <td>计算机科学与技术、信息安全、物联网工程</td>
+            </tr>
+        </table>
+    </div>
+
+    <div class="bot">
+        <!--实验室-->
+
+        <div class="active active2 lab">
+            <div class="titles">
+                <p>实验室</p>
+                <h4>计算机科学与技术学院实验室</h4>
+            </div>
+            <ul class="acti_list">
+                <li>
+                    <a href="#">计算机科学与技术学院实验室</a>
+                </li>
+                <li>
+                    <a href="#">智能与嵌入式计算实验室</a>
+                </li>
+                <li>
+                    <a href="#">智能与分布计算实验室</a>
+
+                </li>
+                <li>
+                    <a href="#">外存储系统国家专业实验室&信息存储系统教育部...</a>
+
+                </li>
+                <li>
+                    <a href="#">信息安全实验室</a>
+
+                </li>
+                <li>
+                    <a href="#">数据存储系统与技术教育部工程中心</a>
+
+                </li>
+                <li>
+                    <a href="#">计算机学院科技创新中心</a>
+
+                </li>
+                <li>
+                    <a href="#">服务计算技术与系统教育部重点实验室</a>
+
+                </li>
+                <li>
+                    <a href="#">学生借用公用房登记系统</a>
+
+                </li>
+                <li>
+                    <a href="#">集群与网格计算湖北省重点实验室</a>
+
+                </li>
+            </ul>
+        </div>
+        <!--教师动态-->
+        <div class="active lab2">
+            <div class="titles">
+                <p>教师动态</p>
+                <h4>274名新进教职工参加岗前培训暨师德师风教育活动</h4>
+            </div>
+            <ul class="acti_list">
+                <li>
+                    <a href="#">暑期工作会议师生凝聚共识加快内涵发展实施倍增计划</a>
+                    <span>2019-09-02</span>
+                </li>
+                <li>
+                    <a href="#">暑期工作会议师生凝聚共识加快内涵发展实施倍增计划</a>
+                    <span>2019-09-02</span>
+                </li>
+                <li>
+                    <a href="#">暑期工作会议师生凝聚共识加快内涵发展实施倍增计划</a>
+                    <span>2019-09-02</span>
+                </li>
+                <li>
+                    <a href="#">暑期工作会议师生凝聚共识加快内涵发展实施倍增计划</a>
+                    <span>2019-09-02</span>
+                </li>
+                <li>
+                    <a href="#">计算机学院组织研究生赴西柏坡、雄安新区和白洋淀开展“新中国从这里走来”主题...</a>
+                    <span>2019-09-02</span>
+                </li>
+            </ul>
+        </div>
+        <div class="clear"></div>
+
+
+    </div>
+
+    <!--footer-->
+    <div class="footer2">
+        <p>版权所有：华中科技大学网络与信息化办公室&nbsp;&nbsp;&nbsp;地址：湖北省武汉市洪山区珞喻路1037号&nbsp;&nbsp;&nbsp;邮政编码：430074</p>
+    </div>
+
+</div>
+
+
+<script type="text/javascript" src="../js/jquery.min.js"></script>
+<script type="text/javascript" src="../js/jquery.SuperSlide.js"></script>
+<script>
+    $(".scol ul li").click(function () {
+        //	alert(11);
+        var index = $(".scol ul li").index();
+        $(this).eq(index).addClass("oli").siblings().removeClass("oli");
+        console.log($(this));
+
+    })
+    jQuery(".picScroll-left2").slide({
+        titCell: ".hd ul",
+        mainCell: ".bd ul",
+        autoPage: true,
+        effect: "left",
+        vis: 6,
+        pnLoop: false
+    });
+</script>
+</body>
+</html>
