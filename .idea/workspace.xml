@@ -2,11 +2,14 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a47a2fd4-0101-4d92-a8be-a2cd6246c3c1" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/hust-search/src/main/java/com/hust/hustsearch/controller/IndexController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/hust-search/src/main/java/com/hust/hustsearch/dao/TeacherDao.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/hust-search/src/main/java/com/hust/hustsearch/entity/College.java" beforeDir="false" afterPath="$PROJECT_DIR$/hust-search/src/main/java/com/hust/hustsearch/entity/College.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hust-search/src/main/java/com/hust/hustsearch/controller/CollegeController.java" beforeDir="false" afterPath="$PROJECT_DIR$/hust-search/src/main/java/com/hust/hustsearch/controller/CollegeController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hust-search/src/main/java/com/hust/hustsearch/dao/LabDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/hust-search/src/main/java/com/hust/hustsearch/dao/LabDao.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/hust-search/src/main/java/com/hust/hustsearch/service/SearchService.java" beforeDir="false" afterPath="$PROJECT_DIR$/hust-search/src/main/java/com/hust/hustsearch/service/SearchService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/hust-search/src/main/resources/templates/college.html" beforeDir="false" afterPath="$PROJECT_DIR$/hust-search/src/main/resources/templates/college.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hust-search/src/main/resources/templates/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/hust-search/src/main/resources/templates/index.html" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -37,7 +40,9 @@
     </option>
   </component>
   <component name="ProjectId" id="1TphDXVJQhSsgrQNvbZgp4x8PRb" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="PropertiesComponent">
     <property name="RequestMappingsPanelOrder0" value="0" />
     <property name="RequestMappingsPanelOrder1" value="1" />
@@ -155,8 +160,18 @@
       <workItem from="1574412075648" duration="1198000" />
       <workItem from="1574839514867" duration="17113000" />
       <workItem from="1574904245304" duration="10453000" />
-      <workItem from="1574926319660" duration="6746000" />
+      <workItem from="1574926319660" duration="6893000" />
+      <workItem from="1574995423496" duration="1886000" />
+      <workItem from="1574997765275" duration="8717000" />
     </task>
+    <task id="LOCAL-00001" summary="添加英文名">
+      <created>1574950395039</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1574950395039</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -167,10 +182,16 @@
       <map>
         <entry key="MAIN">
           <value>
-            <State />
+            <State>
+              <option name="COLUMN_ORDER" />
+            </State>
           </value>
         </entry>
       </map>
     </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="添加英文名" />
+    <option name="LAST_COMMIT_MESSAGE" value="添加英文名" />
   </component>
 </project>

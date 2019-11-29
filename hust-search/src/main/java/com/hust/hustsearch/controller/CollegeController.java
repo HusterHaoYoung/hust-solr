@@ -1,7 +1,11 @@
 package com.hust.hustsearch.controller;
 
 
+import com.hust.hustsearch.dao.LabDao;
+import com.hust.hustsearch.dao.TeacherDao;
 import com.hust.hustsearch.entity.College;
+import com.hust.hustsearch.entity.Lab;
+import com.hust.hustsearch.entity.Teacher;
 import com.hust.hustsearch.service.SearchService;
 import org.apache.solr.client.solrj.SolrServerException;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,6 +29,11 @@ public class CollegeController {
     @Autowired
     private SearchService searchService;
 
+    @Autowired
+    private TeacherDao teacherDao;
+
+    @Autowired
+    private LabDao labDao;
     @RequestMapping("initAllData")
     @ResponseBody
     public String initAllData() throws IOException, SolrServerException {
@@ -35,7 +44,11 @@ public class CollegeController {
     public String searchByKeyword(String keyWord, Model model){
         System.out.println("---------------"+keyWord);
         College college = searchService.searchByKeyword(keyWord);
+        List<Teacher> teachers = teacherDao.findByCollegeId(college.getId(),8);
+        List<Lab> labs = labDao.findByCollegeId(college.getId(),10);
         model.addAttribute("college",college);
+        model.addAttribute("teachers",teachers);
+        model.addAttribute("labs",labs);
         return "college";
     }
 }

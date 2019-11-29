@@ -93,7 +93,7 @@
                     学院简介
                 </div>
                 <div class="abstract">
-                    <p class="con" th:text="${college.getIntroduction().substring(0,250)}"></p>
+                    <p class="con" th:text="${college.getIntroduction().substring(0,295)}+'...'"></p>
                     <a  th:href="@{${college.getIntroductionLink()}}"> 阅读详情</a>
                 </div>
                 <div class="picScroll-left picScroll-left2">
@@ -103,93 +103,12 @@
                     </div>
                     <div class="bd">
                         <ul class="picList">
-                            <li>
-                                <div class="pic"><a href="#" target="_blank"><img src="../img/shi1.png"/></a></div>
+                            <li th:each="teacher : ${teachers}">
+                                <div class="pic"><a href="#" target="_blank"><img src="../img/shi1.png" th:src="@{'http://faculty.hust.edu.cn/'+${teacher.getImg()}}"/></a></div>
                                 <div class="title">
                                     <a href="#" target="_blank">
-                                        <h6>陈汉华</h6>
-                                        <p>教授&nbsp;&nbsp;博士生导师</p>
-                                    </a>
-                                </div>
-                            </li>
-                            <li>
-                                <div class="pic"><a href="#" target="_blank"><img src="../img/shi2.png"/></a></div>
-                                <div class="title">
-                                    <a href="#" target="_blank">
-                                        <h6>陈敏</h6>
-                                        <p>教授&nbsp;&nbsp;博士生导师</p>
-                                    </a>
-                                </div>
-                            </li>
-                            <li>
-                                <div class="pic"><a href="#" target="_blank"><img src="../img/shi3.png"/></a></div>
-                                <div class="title">
-                                    <a href="#" target="_blank">
-                                        <h6>代炜琦</h6>
-                                        <p>讲师&nbsp;&nbsp;硕士生导师</p>
-                                    </a>
-                                </div>
-                            </li>
-                            <li>
-                                <div class="pic"><a href="#" target="_blank"><img src="../img/shi4.png"/></a></div>
-                                <div class="title">
-                                    <a href="#" target="_blank">
-                                        <h6>丁晓锋</h6>
-                                        <p>副教授&nbsp;&nbsp;博士生导师</p>
-                                    </a>
-                                </div>
-                            </li>
-                            <li>
-                                <div class="pic"><a href="#" target="_blank"><img src="../img/shi5.png"/></a></div>
-                                <div class="title">
-                                    <a href="#" target="_blank">
-                                        <h6>辜希武</h6>
-                                        <p>副研究员&nbsp;&nbsp;硕士生导师</p>
-                                    </a>
-                                </div>
-                            </li>
-                            <li>
-                                <div class="pic"><a href="#" target="_blank"><img src="../img/shi6.png"/></a></div>
-                                <div class="title">
-                                    <a href="#" target="_blank">
-                                        <h6>顾琳</h6>
-                                        <p>讲师 &nbsp;&nbsp;硕士生导师</p>
-                                    </a>
-                                </div>
-                            </li>
-                            <li>
-                                <div class="pic"><a href="#" target="_blank"><img src="../img/shi6.png"/></a></div>
-                                <div class="title">
-                                    <a href="#" target="_blank">
-                                        <h6>顾琳</h6>
-                                        <p>讲师 &nbsp;&nbsp;硕士生导师</p>
-                                    </a>
-                                </div>
-                            </li>
-                            <li>
-                                <div class="pic"><a href="#" target="_blank"><img src="../img/shi6.png"/></a></div>
-                                <div class="title">
-                                    <a href="#" target="_blank">
-                                        <h6>顾琳</h6>
-                                        <p>讲师 &nbsp;&nbsp;硕士生导师</p>
-                                    </a>
-                                </div>
-                            </li>
-                            <li>
-                                <div class="pic"><a href="#" target="_blank"><img src="../img/shi6.png"/></a></div>
-                                <div class="title">
-                                    <a href="#" target="_blank">
-                                        <h6>顾琳</h6>
-                                        <p>讲师 &nbsp;&nbsp;硕士生导师</p>
-                                    </a>
-                                </div>
-                            </li>
-                            <li>
-                                <div class="pic"><a href="#" target="_blank"><img src="../img/shi6.png"/></a></div>
-                                <div class="title">
-                                    <a href="#" target="_blank">
-                                        <h6>顾琳</h6>
-                                        <p>讲师 &nbsp;&nbsp;硕士生导师</p>
+                                        <h6 th:text="${teacher.getName()}"></h6>
+                                        <p th:text="${teacher.getProrank()}"></p>
                                     </a>
                                 </div>
                             </li>
@@ -274,47 +193,13 @@
         <div class="active active2 lab">
             <div class="titles">
                 <p>实验室</p>
-                <h4>计算机科学与技术学院实验室</h4>
+                <h4 th:text="${college.getName()} + '实验室'"></h4>
             </div>
             <ul class="acti_list">
-                <li>
-                    <a href="#">计算机科学与技术学院实验室</a>
+                <li th:each="lab : ${labs}">
+                    <a href th:href="'http://'+${lab.getWebsite()}" th:text="${lab.getName()}">计算机科学与技术学院实验室</a>
                 </li>
-                <li>
-                    <a href="#">智能与嵌入式计算实验室</a>
-                </li>
-                <li>
-                    <a href="#">智能与分布计算实验室</a>
 
-                </li>
-                <li>
-                    <a href="#">外存储系统国家专业实验室&信息存储系统教育部...</a>
-
-                </li>
-                <li>
-                    <a href="#">信息安全实验室</a>
-
-                </li>
-                <li>
-                    <a href="#">数据存储系统与技术教育部工程中心</a>
-
-                </li>
-                <li>
-                    <a href="#">计算机学院科技创新中心</a>
-
-                </li>
-                <li>
-                    <a href="#">服务计算技术与系统教育部重点实验室</a>
-
-                </li>
-                <li>
-                    <a href="#">学生借用公用房登记系统</a>
-
-                </li>
-                <li>
-                    <a href="#">集群与网格计算湖北省重点实验室</a>
-
-                </li>
             </ul>
         </div>
         <!--教师动态-->

@@ -46,6 +46,7 @@ public class SearchService implements ISearchService {
             document.setField("college_index", college.getIndex());
             document.setField("college_introduction", college.getIntroduction());
             document.setField("college_name", college.getName());
+            document.setField("college_phone",college.getPhone());
             document.setField("college_introduction_link", college.getIntroductionLink());
             document.setField("college_english_name",college.getEnglishName());
             try {
