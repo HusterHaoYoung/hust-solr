@@ -1,9 +1,10 @@
 package com.hust.hustsearch.controller;
 
 import com.hust.hustsearch.dao.LabDao;
-import com.hust.hustsearch.entity.PageResultBean;
-import com.hust.hustsearch.entity.ResearchDirection;
-import com.hust.hustsearch.entity.Teacher;
+import com.hust.hustsearch.dao.ResearchDirectionDao;
+import com.hust.hustsearch.dao.ResearchResultDao;
+import com.hust.hustsearch.dao.TeacherDao;
+import com.hust.hustsearch.entity.*;
 import com.hust.hustsearch.service.LabSearchService;
 import org.apache.solr.client.solrj.SolrServerException;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,25 +31,37 @@ import java.util.List;
 public class LabController {
     @Autowired
     private LabSearchService labSearchService;
+    @Autowired
+    private ResearchDirectionDao researchDirectionDao;
+    @Autowired
+    private ResearchResultDao researchResultDao;
+    @Autowired
+    private TeacherDao teacherDao;
     @RequestMapping("initAllData")
     @ResponseBody
     public String initAllLabData() throws IOException, SolrServerException {
         System.out.println("--------------getting lab's data");
         return labSearchService.initAllData();
     }
+
     @GetMapping("page/{pageIndex}/{pageSize}")
     public String searchLabNamePage(@PathVariable("pageIndex") Integer pageIndex, @PathVariable("pageSize") Integer pageSize, String labName, Model model) {
-        System.out.println("---------------" + pageIndex+"---"+pageSize+"----"+labName);
-//        List<Teacher> teachers = teacherSearchService.searchByName(teacherName);
+        System.out.println("---------------" + pageIndex + "---" + pageSize + "----" + labName);
 
-//        PageResultBean<Teacher> teachers = teacherSearchService.searchByTeacherName(teacherName, pageIndex,pageSize);
-//        System.out.println("---size="+teachers.getList().size());
+        PageResultBean<Lab> labPageResultBean = labSearchService.searchByLabName(labName, pageIndex, pageSize);
+        System.out.println("---size=" + labPageResultBean.getList().size());
         HashMap<Integer, List<ResearchDirection>> hashMap = new HashMap<>();
-//        for (Teacher t:teachers.getList()){
-//            hashMap.put(t.getId(),researchDirectionDao.findByTeacherId(t.getId()));
-//        }
-//        model.addAttribute("pageInfo", teachers);
-        model.addAttribute("hashmap",hashMap);
+        HashMap<Integer,List<Teacher>> hashMap1 = new HashMap<>();
+        HashMap<Integer,List<ResearchResult>> researchResultMap = new HashMap<>();
+        for (Lab l : labPageResultBean.getList()) {
+            hashMap.put(l.getId(), researchDirectionDao.findByLabId(l.getId()));
+            hashMap1.put(l.getId(),teacherDao.findByLabId(l.getId()));
+            researchResultMap.put(l.getId(),researchResultDao.findByLabId(l.getId()));
+        }
+        model.addAttribute("pageInfo", labPageResultBean);
+        model.addAttribute("hashMap", hashMap);
+        model.addAttribute("teacherMap",hashMap1);
+        model.addAttribute("researchResultMap",researchResultMap);
         return "lab";
     }
 }

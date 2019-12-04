@@ -15,4 +15,5 @@ public interface TeacherDao extends JpaRepository<Teacher, Integer>, JpaSpecific
     @Query(value = "select * from teacher  where  college_id = :college_id limit :num",nativeQuery = true)
     List<Teacher> findByCollegeId(@Param("college_id") int collegeId, @Param("num") int limit);
 
+    List<Teacher> findByLabId(int LabId);
 }

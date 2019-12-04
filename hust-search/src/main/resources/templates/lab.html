@@ -1,14 +1,14 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:th="http://www.thymeleaf.org">
 	<head>
 		<meta charset="UTF-8">
 		<title></title>
-		<base href="./"/>
 		<meta content="IE=edge" http-equiv="X-UA-Compatible">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="renderer" content="webkit">
         <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
-        <link rel="stylesheet" href="../css/style.css" />
+		<base href="/"/>
+		<link rel="stylesheet" href="../../../css/style.css" />
 	</head>
 	<body>
 		
@@ -16,7 +16,7 @@
 		<div class="wrap">
 			<div class="nav_wrap">
 				<div class="logo2">
-					<img src="../img/logo2.png" />
+					<img src="../../../img/logo2.png" />
 				</div>
 				<ul class="nav">
 					<li class="other  ons">
@@ -39,10 +39,11 @@
 			</div>
 		</div>
 		<!--right-->
-		<div class="cont">
+		<div th:each="lab : ${pageInfo.getList()}" class="cont">
 			<div class="search2">
-				<form action="#" method="post">
-				    <input type="text" name="" class="inp" placeholder="半导体化电力系统研究中心（CSPS实验室）"><input type="submit" name="" value="点击搜索" class="btn">
+				<form action="/searchLab/page/1/1" method="get">
+				    <input type="text" name="" class="inp" th:placeholder="${lab.getName()}">
+					<input type="submit" name="submit" value="点击搜索" class="btn">
 				</form>
 			</div>
 			<!--研究团队-->
@@ -50,32 +51,36 @@
 				<div class="item">
 					<div class="item_top">
 						<div class="item_pic">
-							<img src="../img/pic2.png" />
+							<img src="../../../img/pic2.png" />
 						</div>
 						<div class="item_topic">
-							<h1>半导体化电力系统研究中心</h1>
-							<p>Center for Semiconducting Power System</p>
+							<h1 th:text="${lab.getName()}">半导体化电力系统研究中心</h1>
+<!--							<p>Center for Semiconducting Power System</p>-->
 							<ul>
 								<li class="i1">
 									<h6>学院</h6>
-									<span>电气与电子工程学院</span>
+									<span th:text="${lab.getCollegeName()}">电气与电子工程学院</span>
 								</li>
 								<li class="i2">
 									<h6>电话</h6>
-									<span>027-87558627</span>
+									<span th:text="${lab.getPhone()}">027-87558627</span>
 								</li>
 								<li class="i3">
 									<h6>邮箱</h6>
-									<span>cspshust@126.com</span>
+									<span th:text="${lab.getEmail()}">cspshust@126.com</span>
 								</li>
 								<li class="i4">
 									<h6>地址</h6>
-									<span>湖北省武汉市洪山区珞喻路1037号</span>
+									<span th:text="${lab.getAddress()}">湖北省武汉市洪山区珞喻路1037号</span>
 								</li>
 								<li class="i5 oli_last">
 									<h6>研究领域</h6>
-									<span>-  电力电子化电力系统稳定性分析理论与控制方法</span><br>
-									<span class="second">-  故障分析理论及保护方法等</span><br>
+									<h6 th:each="research : ${hashMap[__${lab.getId()}__]}">
+										<!--                <li th:each="lab : ${labs}">-->
+										<span th:text="'-  '+${research.getName()}">-  可再生能源发电设备及其控制等</span><br>
+									</h6>
+<!--									<span>-  电力电子化电力系统稳定性分析理论与控制方法</span><br>-->
+<!--									<span class="second">-  故障分析理论及保护方法等</span><br>-->
 							</ul>
 						</div>
 						<div class="clear"></div>
@@ -86,7 +91,7 @@
 							研究团队
 						</div>
 						<div class="abstract">
-							<p class="con">
+							<p class="con" th:text="${#strings.abbreviate(lab.getIntroduction(),190)}">
 								为了应对电力系统电力电子化变革的新形势，半导体化电力系统研究中心(Center for Semiconducting Power Systems，CSPS)于2011年成立。致力于为半导体化电力系统的安全稳定运行提供理论与技术支
 撑。主要研究领域包括：电力电子化电力系统稳定性分析理论与控制方法、故障分析理论及保护方法等。中心建立了适用于电力电子化电力系统动态分析的幅频动力学体系（基于幅频运动方程的不同尺度设备和网络建
 模理论、基于自稳性/致稳性的动态相互作用分析方法、以及基于广义稳定器的稳定控制方法）。未来将在实践中不断完善和丰富幅频动力学理论和方法，引领国际相关学术研究的方向和思路...		             
@@ -100,93 +105,12 @@
 							</div>
 							<div class="bd">
 								<ul class="picList">
-									<li>
-										<div class="pic"><a href="#" target="_blank"><img src="../img/pic1.png" /></a></div>
+									<li th:each="teacher : ${teacherMap[__${lab.getId()}__]}">
+										<div class="pic"><a href="#" target="_blank"><img th:src="@{'http://faculty.hust.edu.cn/'+${teacher.getImg()}}" src="../img/pic1.png" /></a></div>
 										<div class="title">
 											<a href="#" target="_blank">
-												<h6>袁小明</h6>
-												<p>教授&nbsp;&nbsp;博士生导师</p>
-											</a>
-										</div>
-									</li>
-									<li>
-										<div class="pic"><a href="#" target="_blank"><img src="../img/tu2.png" /></a></div>
-										<div class="title">
-											<a href="#" target="_blank">
-												<h6>胡家兵</h6>
-												<p>教授&nbsp;&nbsp;博士生导师</p>
-											</a>
-										</div>
-									</li>
-									<li>
-										<div class="pic"><a href="#" target="_blank"><img src="../img/tu3.png" /></a></div>
-										<div class="title">
-											<a href="#" target="_blank">
-												<h6>占萌</h6>
-												<p>教授&nbsp;&nbsp;博士生导师</p>
-											</a>
-										</div>
-									</li>
-									<li>
-										<div class="pic"><a href="#" target="_blank"><img src="../img/tu4.png" /></a></div>
-										<div class="title">
-											<a href="#" target="_blank">
-												<h6>迟永宁</h6>
-												<p>教授级高级工程师</p>
-											</a>
-										</div>
-									</li>
-									<li>
-										<div class="pic"><a href="#" target="_blank"><img src="../img/tu5.png" /></a></div>
-										<div class="title">
-											<a href="#" target="_blank">
-												<h6>贺之渊</h6>
-												<p>教授级高级工程师</p>
-											</a>
-										</div>
-									</li>
-									<li>
-										<div class="pic"><a href="#" target="_blank"><img src="../img/tu5.png" /></a></div>
-										<div class="title">
-											<a href="#" target="_blank">
-												<h6>孙华东</h6>
-												<p>教授级高级工程师</p>
-											</a>
-										</div>
-									</li>
-									<li>
-										<div class="pic"><a href="#" target="_blank"><img src="../img/tu1.png" /></a></div>
-										<div class="title">
-											<a href="#" target="_blank">
-												<h6>袁小明</h6>
-												<p>教授&nbsp;&nbsp;博士生导师</p>
-											</a>
-										</div>
-									</li>
-									<li>
-										<div class="pic"><a href="#" target="_blank"><img src="../img/tu1.png" /></a></div>
-										<div class="title">
-											<a href="#" target="_blank">
-												<h6>袁小明</h6>
-												<p>教授&nbsp;&nbsp;博士生导师</p>
-											</a>
-										</div>
-									</li>
-									<li>
-										<div class="pic"><a href="#" target="_blank"><img src="../img/tu1.png" /></a></div>
-										<div class="title">
-											<a href="#" target="_blank">
-												<h6>袁小明</h6>
-												<p>教授&nbsp;&nbsp;博士生导师</p>
-											</a>
-										</div>
-									</li>
-									<li>
-										<div class="pic"><a href="#" target="_blank"><img src="../img/tu1.png" /></a></div>
-										<div class="title">
-											<a href="#" target="_blank">
-												<h6>袁小明</h6>
-												<p>教授&nbsp;&nbsp;博士生导师</p>
+												<h6 th:text="${teacher.getName()}">袁小明</h6>
+												<p th:text="|${teacher.getProrank()}| + '  '+ ${teacher.getDtutor()}">教授&nbsp;&nbsp;博士生导师</p>
 											</a>
 										</div>
 									</li>
@@ -254,30 +178,35 @@
 				<!--翻页-->
 				<div class="scol">
 					<div class="scol_fir">
-							<a href="#">上一页</a>
-						</div>
+						<td th:switch="${pageInfo.pageNum}">
+							<p th:case="1"><a th:href="|searchLab/page/1/${pageInfo.pageSize}|">上一页</a></p>
+							<p th:case="*"><a
+									th:href="|searchLab/page/${pageInfo.pageNum -1}/${pageInfo.pageSize}|">上一页</a>
+							</p>
+						</td>
+						<!--                <a href="#"-->
+						<!--                   th:href="|searchTeacher/page/${pageInfo.pageNum}-1/${pageInfo.pageSize}|">上一页</a>-->
+					</div>
 					<ul>
-						
-						<li class="oli">
-							<a href="#">1</a>
+						<!--						<li class="oli">-->
+						<!--							<a href="#">1</a>-->
+						<!--						</li>-->
+						<li th:each="num :${pageInfo.getNavigatePageNums()}"
+							th:class="${num==pageInfo.pageNum?'oli':''}">
+							<a href="" th:href="|searchLab/page/${num}/${pageInfo.pageSize}|" th:text="${num}">2</a>
 						</li>
-						<li >
-							<a href="#">2</a>
-						</li>
-						<li >
-							<a href="#">3</a>
-						</li>
-						<li>
-							<a href="#">4</a>
-						</li>
-						<li>
-							<a href="#">5</a>
-						</li>
-						
-						
+
+
 					</ul>
 					<div class="scol_last">
-						<a href="#">下一页</a>
+						<!--                <a href="#" th:href="|searchTeacher/page/${pageInfo.pageNum + 1}/${pageInfo.pageSize}|">下一页</a>-->
+						<td th:switch="${pageInfo.pageNum}">
+							<p th:case="${pageInfo.pages}"><a
+									th:href="|searchLab/page/${pageInfo.pages}/${pageInfo.pageSize}|">下一页</a></p>
+							<p th:case="*"><a
+									th:href="|searchLab/page/${pageInfo.pageNum +1}/${pageInfo.pageSize}|">下一页</a>
+							</p>
+						</td>
 					</div>
 				</div>
 			</div>
