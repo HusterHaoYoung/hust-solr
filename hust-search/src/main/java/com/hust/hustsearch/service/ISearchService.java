@@ -6,4 +6,5 @@ import java.io.IOException;
 
 public interface ISearchService {
     String initAllData() throws IOException, SolrServerException;
+
 }

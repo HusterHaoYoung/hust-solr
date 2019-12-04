@@ -1,7 +1,11 @@
 package com.hust.hustsearch.service;
 
 import com.hust.hustsearch.dao.CollegeDao;
+import com.hust.hustsearch.dao.ResearchDirectionDao;
+import com.hust.hustsearch.dao.TeacherDao;
 import com.hust.hustsearch.entity.College;
+import com.hust.hustsearch.entity.ResearchDirection;
+import com.hust.hustsearch.entity.Teacher;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.solr.client.solrj.SolrClient;
 import org.apache.solr.client.solrj.SolrQuery;
@@ -24,7 +28,7 @@ import java.util.List;
  * @date : 11/27/19  3:37 PM
  */
 @Service
-public class SearchService implements ISearchService {
+public class CollegeSearchService implements ISearchService {
     @Autowired
     private CollegeDao collegeDao;
     @Autowired
@@ -46,9 +50,9 @@ public class SearchService implements ISearchService {
             document.setField("college_index", college.getIndex());
             document.setField("college_introduction", college.getIntroduction());
             document.setField("college_name", college.getName());
-            document.setField("college_phone",college.getPhone());
+            document.setField("college_phone", college.getPhone());
             document.setField("college_introduction_link", college.getIntroductionLink());
-            document.setField("college_english_name",college.getEnglishName());
+            document.setField("college_english_name", college.getEnglishName());
             try {
                 solrClient.add(document);
             } catch (SolrServerException | IOException e) {
@@ -64,7 +68,7 @@ public class SearchService implements ISearchService {
         return "success";
     }
 
-    public College searchByKeyword(String keyword) {
+    public College searchByCollegeName(String keyword) {
         //1、组装查询条件
         SolrQuery query = new SolrQuery();
         if (!StringUtils.isAllEmpty(keyword)) {
@@ -103,7 +107,7 @@ public class SearchService implements ISearchService {
                 if (list.get(i).getFieldValue("college_phone") != null) {
                     college.setPhone(list.get(i).getFieldValue("college_phone").toString());
                 }
-                if(list.get(i).getFieldValue("college_english_name")!=null){
+                if (list.get(i).getFieldValue("college_english_name") != null) {
                     college.setEnglishName(list.get(i).getFieldValue("college_english_name").toString());
                 }
             }

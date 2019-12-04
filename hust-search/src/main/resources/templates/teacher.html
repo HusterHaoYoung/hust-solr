@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <!--[if lte IE 8]>
+    <script src="PIE.js"></script>
+    <![endif]-->
+    <meta charset="UTF-8">
+    <title></title>
+    <meta content="IE=edge" http-equiv="X-UA-Compatible">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="renderer" content="webkit">
+    <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+    <base href="/"/>
+    <link rel="stylesheet" href="../../../css/style.css"/>
+</head>
+<body>
+
+<!--nav-->
+<div class="wrap">
+    <div class="nav_wrap">
+        <div class="logo2">
+            <img src="../../../img/logo2.png"/>
+        </div>
+        <ul class="nav">
+            <li class="other  ons">
+                <a href="#" class="icon1">主<span></span>页</a>
+            </li>
+            <li class="other">
+                <a href="#" class="icon2">院<span></span>系</a>
+            </li>
+            <li>
+                <a href="#" class=" icon3">联系我们</a>
+            </li>
+            <li>
+                <a href="#" class="icon4">关于主页</a>
+            </li>
+        </ul>
+        <div class="visit">
+            <p class="all"><span>总访问量</span>：1042.50万</p>
+            <p class="today">今日访问量：23376</p>
+        </div>
+    </div>
+</div>
+<!--right-->
+<div th:each="teacher : ${pageInfo.getList()}" class="cont">
+    <div class="search2">
+        <form action="/searchTeacher/page/1/1" method="get">
+            <input type="text" name="teacherName" class="inp" th:placeholder="${teacher.getName()}"><input type="submit" name="submit"
+                                                                                                value="点击搜索"
+                                                                                                class="btn">
+        </form>
+    </div>
+
+    <div class="intro">
+        <div class="intro_left">
+            <div class="pic_box">
+                <img width="200" th:src="@{'http://faculty.hust.edu.cn/'+${teacher.getImg()}}" src="img/pic1.png"/>
+            </div>
+            <div class="self">
+                <p th:inline="text">
+                    <span th:text="${teacher.getName()}"></span>
+                    [[${teacher.getDtutor()}]] [[${teacher.getTutor()}]]
+                </p>
+                <ul>
+                    <li class="ico1">
+                        <h6>学科</h6>
+                        <span th:text="${teacher.getSubjectName()}">电力电子与电力传动  电力系统及其自动化</span>
+                    </li>
+                    <li class="ico2">
+                        <h6>学院</h6>
+                        <span th:text="${teacher.getCollegeName()}">电气与电子工程学院</span>
+                    </li>
+                    <li class="ico3">
+                        <h6>职称</h6>
+                        <span th:text="${teacher.getProrank()}">华中科技大学教授</span>
+                    </li>
+                    <li class="ico4">
+                        <h6>电话</h6>
+                        <span th:text="${teacher.getPhone()}">027-87559790</span>
+                    </li>
+                    <li class="ico5">
+                        <h6>邮箱</h6>
+                        <span th:text="${teacher.getEmail()}">yuanxm@mail.hust.edu.cn</span>
+                    </li>
+                    <li class="ico6">
+                        <h6>地址</h6>
+                        <span th:text="${teacher.getAddress()}">华中科技大学西九楼218室</span>
+                    </li>
+                    <li class="ico7">
+                        <h6>邮编</h6>
+                        <span>430074</span>
+                    </li>
+                </ul>
+
+            </div>
+
+            <!--            <div class="code">-->
+            <!--                <img src="../img/code.png"/>-->
+            <!--            </div>-->
+            <div class="clear"></div>
+        </div>
+        <div class="intro_right">
+            <ul>
+                <li>
+                    <h6>研究方向</h6>
+                    <h6 th:each="research : ${hashmap[__${teacher.getId()}__]}">
+                        <!--                <li th:each="lab : ${labs}">-->
+                        <span th:text="'-  '+${research.getName()}">-  可再生能源发电设备及其控制等</span><br>
+                    </h6>
+                    <!--                    <span class="second">-  直流输电系统及其控制</span><br>-->
+                    <!--                    <span class="second">-  多发电机多变流器电力系统稳定与控制</span> <br>-->
+
+                </li>
+                <li class="last">
+                    <h6>学术荣誉</h6>
+                    <span th:text="${teacher.getHonor()}"></span>
+                </li>
+                <!--                <li class="last las">-->
+                <!--                    <h6>首获荣誉</h6>-->
+                <!--                    <span>2017    GE可再生能源发电故障穿越技术、虚拟同步发电技术的发明人，是变流器比例谐振控制-->
+                <!--技术的奠基人。率先倡导电力电子化电力系统安全稳定问题的研究，初步建立了多尺度建模、分-->
+                <!--析和控制的理论体系。 截止2017年发表SCI和EI检索的学术论文60余篇，包括IEEE Transacti-->
+                <!--ons 18篇。一篇获得1999年IEEE 工业应用年会（IAS）最佳论文一等奖。</span>-->
+                <!--                </li>-->
+            </ul>
+            <div class="clear"></div>
+        </div>
+        <div class="clear"></div>
+        <!--个人简介-->
+        <div class="jian">
+            <div class="titles">
+                个人简介
+            </div>
+            <div class="content" th:text="${#strings.abbreviate(teacher.getIntroduction(),190)}">
+                袁小明，华中科技大学教授，国家重点基础研究计划（973计划）项目“大规模风力发电并网基础科学问题”首席科学家，国家高技术研究计划（863计划）新型电力电子关键技术及装备主题专家，国家十三五规划智能
+                电网技术与装备重点专项专家组成员，国家特聘专家，教育部科技委能源学部委员。1998-2000瑞士苏黎世联邦理工学院任研究员。2000-2010
+                GE全球研究中心任电力电子技术研究室经理、电气化平台召集人、电气总
+                工程师，是GE历史上首位华人总工程师。2010年8月加入华中科技大学。拥有近30项授权美国专利，19项国内专利。是GE可再生能源发电故障穿越技术、虚拟同步发电技术的发明人，是变流器比例谐振控制技术的奠基
+                人。率先倡导电力电子化电力系统安全稳定问题的研究，初步建立了多尺度建模、分析和控制的理论体系。[所带领实验团队网站教师介绍页面：http://csps.seee.hust.edu.cn/info/1015/1147.htm]
+                电话：027-
+                87544359，传真：027-87540937。电邮：yuanxm@mail.hust.edu.cn。
+            </div>
+        </div>
+        <div class="clear"></div>
+    </div>
+    <div class="clear"></div>
+    <div class="bot">
+        <!--研究团队-->
+
+        <div class="team">
+            <div class="titles">
+                <p>研究团队</p>
+                <h4 th:text="${teacher.getLabName()}">半导体化电力系统研究中心（CSPS实验室）</h4>
+            </div>
+            <div class="team_cont">
+                <p class="description" th:text="${#strings.abbreviate(teacher.getLabIntroduction(),130)}">
+                    为了应对电力系统电力电子化变革的新形势，半导体化电力系统研究中心(Center for Semiconducting Po-
+                    wer Systems，CSPS) 于2011年成立。致力于为半导体化电力系统的安全稳定运行提供理论与技术支撑。主
+                    要研究领域包括：电力电子化电力系统稳定性分析理论与控制方法、故障分析理论及保护方法等。中心建立
+                    了适用于电力电子化电力系统动态分析的幅相动力学体系（基于幅相运动方程的不同尺度设备和网络建模理
+                    论、基于自稳性/致稳性的动态相互作用分析方法、以及基于广义稳定器的稳定控制方法）...
+                </p>
+                <a href="#" th:href="${teacher.getLabWebsite()}">阅读详情</a>
+            </div>
+        </div>
+        <!--教师动态-->
+        <div class="active">
+            <div class="titles">
+                <p>教师动态</p>
+                <h4>274名新进教职工参加岗前培训暨师德师风教育活动</h4>
+            </div>
+            <ul class="acti_list">
+                <li>
+                    <a href="#">暑期工作会议师生凝聚共识加快内涵发展实施倍增计划</a>
+                    <span>2019-09-02</span>
+                </li>
+                <li>
+                    <a href="#">暑期工作会议师生凝聚共识加快内涵发展实施倍增计划</a>
+                    <span>2019-09-02</span>
+                </li>
+                <li>
+                    <a href="#">暑期工作会议师生凝聚共识加快内涵发展实施倍增计划</a>
+                    <span>2019-09-02</span>
+                </li>
+                <li>
+                    <a href="#">暑期工作会议师生凝聚共识加快内涵发展实施倍增计划</a>
+                    <span>2019-09-02</span>
+                </li>
+            </ul>
+        </div>
+        <div class="clear"></div>
+
+        <!--翻页-->
+        <div class="scol">
+            <div class="scol_fir">
+                <td th:switch="${pageInfo.pageNum}">
+                    <p th:case="1"><a th:href="|searchTeacher/page/1/${pageInfo.pageSize}|">上一页</a></p>
+                    <p th:case="*"><a th:href="|searchTeacher/page/${pageInfo.pageNum -1}/${pageInfo.pageSize}|">上一页</a>
+                    </p>
+                </td>
+                <!--                <a href="#"-->
+                <!--                   th:href="|searchTeacher/page/${pageInfo.pageNum}-1/${pageInfo.pageSize}|">上一页</a>-->
+            </div>
+            <ul>
+                <!--						<li class="oli">-->
+                <!--							<a href="#">1</a>-->
+                <!--						</li>-->
+                <li th:each="num :${pageInfo.getNavigatePageNums()}" th:class="${num==pageInfo.pageNum?'oli':''}">
+                    <a href="" th:href="|searchTeacher/page/${num}/${pageInfo.pageSize}|" th:text="${num}">2</a>
+                </li>
+
+
+            </ul>
+            <div class="scol_last">
+                <!--                <a href="#" th:href="|searchTeacher/page/${pageInfo.pageNum + 1}/${pageInfo.pageSize}|">下一页</a>-->
+                <td th:switch="${pageInfo.pageNum}">
+                    <p th:case="${pageInfo.pages}"><a
+                            th:href="|searchTeacher/page/${pageInfo.pages}/${pageInfo.pageSize}|">下一页</a></p>
+                    <p th:case="*"><a th:href="|searchTeacher/page/${pageInfo.pageNum +1}/${pageInfo.pageSize}|">下一页</a>
+                    </p>
+                </td>
+            </div>
+        </div>
+    </div>
+
+    <!--footer-->
+    <div class="footer2">
+        <p>版权所有：华中科技大学网络与信息化办公室&nbsp;&nbsp;&nbsp;地址：湖北省武汉市洪山区珞喻路1037号&nbsp;&nbsp;&nbsp;邮政编码：430074</p>
+    </div>
+
+</div>
+
+
+<script type="text/javascript" src="../js/jquery.min.js"></script>
+<script type="text/javascript" src="../js/style.js"></script>
+<script>
+    $(".scol ul li").click(function () {
+
+        var index = $(".scol ul li").index();
+        $(this).eq(index).addClass("oli").siblings().removeClass("oli");
+
+
+    })
+
+</script>
+</body>
+</html>

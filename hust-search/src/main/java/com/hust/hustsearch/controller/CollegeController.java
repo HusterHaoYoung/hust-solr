@@ -6,7 +6,7 @@ import com.hust.hustsearch.dao.TeacherDao;
 import com.hust.hustsearch.entity.College;
 import com.hust.hustsearch.entity.Lab;
 import com.hust.hustsearch.entity.Teacher;
-import com.hust.hustsearch.service.SearchService;
+import com.hust.hustsearch.service.CollegeSearchService;
 import org.apache.solr.client.solrj.SolrServerException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -27,7 +27,7 @@ import java.util.List;
 @RequestMapping("search")
 public class CollegeController {
     @Autowired
-    private SearchService searchService;
+    private CollegeSearchService collegeSearchService;
 
     @Autowired
     private TeacherDao teacherDao;
@@ -38,13 +38,14 @@ public class CollegeController {
     @ResponseBody
     public String initAllData() throws IOException, SolrServerException {
         System.out.println("--------------");
-        return searchService.initAllData();
+        return collegeSearchService.initAllData();
     }
     @RequestMapping("searchByKeyWord")
     public String searchByKeyword(String keyWord, Model model){
         System.out.println("---------------"+keyWord);
-        College college = searchService.searchByKeyword(keyWord);
-        List<Teacher> teachers = teacherDao.findByCollegeId(college.getId(),8);
+        College college = collegeSearchService.searchByCollegeName(keyWord);
+//        List<Teacher> teachers = teacherDao.findByCollegeId(college.getId(),8);
+        List<Teacher> teachers = teacherDao.findByCollegeId(college.getId());
         List<Lab> labs = labDao.findByCollegeId(college.getId(),10);
         model.addAttribute("college",college);
         model.addAttribute("teachers",teachers);

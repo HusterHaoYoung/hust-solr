@@ -30,11 +30,30 @@ public class Teacher {
     private String labWebsite;
     private String labIntroduction;
     private int isTutor;
-    private int isDTutor;
+    private int isDtutor;
     private String img;
     private int tid;
     private String degree;
     private String homepage;
+
+    private String dtutor;
+    private String tutor;
+
+    public String getDtutor() {
+        return dtutor;
+    }
+
+    public void setDtutor(String dtutor) {
+        this.dtutor = dtutor;
+    }
+
+    public String getTutor() {
+        return tutor;
+    }
+
+    public void setTutor(String tutor) {
+        this.tutor = tutor;
+    }
 
     public String getLabWebsite() {
         return labWebsite;
@@ -205,12 +224,12 @@ public class Teacher {
         this.isTutor = isTutor;
     }
 
-    public int getIsDTutor() {
-        return isDTutor;
+    public int getIsDtutor() {
+        return isDtutor;
     }
 
-    public void setIsDTutor(int isDTutor) {
-        this.isDTutor = isDTutor;
+    public void setIsDtutor(int isDtutor) {
+        this.isDtutor = isDtutor;
     }
 
     public String getImg() {
@@ -224,7 +243,7 @@ public class Teacher {
     public Teacher() {
     }
 
-    public Teacher(String name, String email, String prorank, String honor, String address, String phone, String zipcode, String introduction, int subjectId, String subjectName, int collegeId, String collegeName, int labId, String labName, String labIntroduction, int isTutor, int isDTutor, String img, int tid, String degree, String homepage, String labWebsite) {
+    public Teacher(String name, String email, String prorank, String honor, String address, String phone, String zipcode, String introduction, int subjectId, String subjectName, int collegeId, String collegeName, int labId, String labName, String labIntroduction, int isTutor, int isDtutor, String img, int tid, String degree, String homepage, String labWebsite) {
         this.name = name;
         this.email = email;
         this.prorank = prorank;
@@ -241,7 +260,7 @@ public class Teacher {
         this.labName = labName;
         this.labIntroduction = labIntroduction;
         this.isTutor = isTutor;
-        this.isDTutor = isDTutor;
+        this.isDtutor = isDtutor;
         this.tid = tid;
         this.img = img;
         this.degree = degree;
@@ -270,7 +289,7 @@ public class Teacher {
                 ", labWebsite='" + labWebsite + '\'' +
                 ", labIntroduction='" + labIntroduction + '\'' +
                 ", isTutor=" + isTutor +
-                ", isDTutor=" + isDTutor +
+                ", isDTutor=" + isDtutor +
                 ", img='" + img + '\'' +
                 ", tid=" + tid +
                 ", degree='" + degree + '\'' +
