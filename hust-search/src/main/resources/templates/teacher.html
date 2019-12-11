@@ -167,24 +167,12 @@
         <div class="active">
             <div class="titles">
                 <p>教师动态</p>
-                <h4>274名新进教职工参加岗前培训暨师德师风教育活动</h4>
+                <h4></h4>
             </div>
             <ul class="acti_list">
-                <li>
-                    <a href="#">暑期工作会议师生凝聚共识加快内涵发展实施倍增计划</a>
-                    <span>2019-09-02</span>
-                </li>
-                <li>
-                    <a href="#">暑期工作会议师生凝聚共识加快内涵发展实施倍增计划</a>
-                    <span>2019-09-02</span>
-                </li>
-                <li>
-                    <a href="#">暑期工作会议师生凝聚共识加快内涵发展实施倍增计划</a>
-                    <span>2019-09-02</span>
-                </li>
-                <li>
-                    <a href="#">暑期工作会议师生凝聚共识加快内涵发展实施倍增计划</a>
-                    <span>2019-09-02</span>
+                <li th:each="news :${webnewsHashMap[__${teacher.getId()}__]}">
+                    <a href="#"th:href="${news.getLink()}" th:text="${news.getTitle()}">暑期工作会议师生凝聚共识加快内涵发展实施倍增计划</a>
+                    <span th:text="${news.getDate().toString().substring(0,10)}">2019-09-02</span>
                 </li>
             </ul>
         </div>

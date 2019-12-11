@@ -2,12 +2,17 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a47a2fd4-0101-4d92-a8be-a2cd6246c3c1" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/hust-search/src/main/java/com/hust/hustsearch/dao/ResearchResultDao.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/hust-search/src/main/java/com/hust/hustsearch/dao/WebnewsDao.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/hust-search/src/main/java/com/hust/hustsearch/entity/Webnews.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hust-search/src/main/java/com/hust/hustsearch/controller/CollegeController.java" beforeDir="false" afterPath="$PROJECT_DIR$/hust-search/src/main/java/com/hust/hustsearch/controller/CollegeController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/hust-search/src/main/java/com/hust/hustsearch/controller/LabController.java" beforeDir="false" afterPath="$PROJECT_DIR$/hust-search/src/main/java/com/hust/hustsearch/controller/LabController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/hust-search/src/main/java/com/hust/hustsearch/dao/TeacherDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/hust-search/src/main/java/com/hust/hustsearch/dao/TeacherDao.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/hust-search/src/main/java/com/hust/hustsearch/service/LabSearchService.java" beforeDir="false" afterPath="$PROJECT_DIR$/hust-search/src/main/java/com/hust/hustsearch/service/LabSearchService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hust-search/src/main/java/com/hust/hustsearch/controller/TeacherController.java" beforeDir="false" afterPath="$PROJECT_DIR$/hust-search/src/main/java/com/hust/hustsearch/controller/TeacherController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hust-search/src/main/java/com/hust/hustsearch/dao/ResearchResultDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/hust-search/src/main/java/com/hust/hustsearch/dao/ResearchResultDao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hust-search/src/main/java/com/hust/hustsearch/service/TeacherSearchService.java" beforeDir="false" afterPath="$PROJECT_DIR$/hust-search/src/main/java/com/hust/hustsearch/service/TeacherSearchService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hust-search/src/main/resources/templates/college.html" beforeDir="false" afterPath="$PROJECT_DIR$/hust-search/src/main/resources/templates/college.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/hust-search/src/main/resources/templates/lab.html" beforeDir="false" afterPath="$PROJECT_DIR$/hust-search/src/main/resources/templates/lab.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hust-search/src/main/resources/templates/teacher.html" beforeDir="false" afterPath="$PROJECT_DIR$/hust-search/src/main/resources/templates/teacher.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -178,7 +183,12 @@
       <workItem from="1575293490826" duration="2252000" />
       <workItem from="1575335500939" duration="22662000" />
       <workItem from="1575426177108" duration="14203000" />
-      <workItem from="1575461732603" duration="6482000" />
+      <workItem from="1575461732603" duration="6741000" />
+      <workItem from="1575512710265" duration="5681000" />
+      <workItem from="1575617327748" duration="2970000" />
+      <workItem from="1575881410676" duration="1197000" />
+      <workItem from="1575945728417" duration="12437000" />
+      <workItem from="1576026746514" duration="2651000" />
     </task>
     <task id="LOCAL-00001" summary="添加英文名">
       <created>1574950395039</created>
@@ -194,7 +204,14 @@
       <option name="project" value="LOCAL" />
       <updated>1575019965938</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="添加实验室">
+      <created>1575468770009</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1575468770009</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -216,13 +233,14 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="添加英文名" />
     <MESSAGE value="添加学院实验室，修改college页面" />
-    <option name="LAST_COMMIT_MESSAGE" value="添加学院实验室，修改college页面" />
+    <MESSAGE value="添加实验室" />
+    <option name="LAST_COMMIT_MESSAGE" value="添加实验室" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="757" y="198" width="462" height="708" key="#com.intellij.ide.util.MemberChooser" timestamp="1575461712634">
+    <state x="757" y="198" width="462" height="708" key="#com.intellij.ide.util.MemberChooser" timestamp="1575976316681">
       <screen x="67" y="27" width="1853" height="1053" />
     </state>
-    <state x="757" y="198" width="462" height="708" key="#com.intellij.ide.util.MemberChooser/67.27.1853.1053/1920.0.1366.768@67.27.1853.1053" timestamp="1575461712634" />
+    <state x="757" y="198" width="462" height="708" key="#com.intellij.ide.util.MemberChooser/67.27.1853.1053/1920.0.1366.768@67.27.1853.1053" timestamp="1575976316681" />
     <state x="501" y="27" width="965" height="1053" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog" timestamp="1575377647331">
       <screen x="67" y="27" width="1853" height="1053" />
     </state>
@@ -231,38 +249,42 @@
       <screen x="67" y="27" width="1853" height="1053" />
     </state>
     <state x="664" y="245" width="649" height="615" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/67.27.1853.1053/1920.0.1366.768@67.27.1853.1053" timestamp="1575293315236" />
-    <state width="1797" height="105" key="GridCell.Tab.0.bottom" timestamp="1575468420810">
+    <state x="464" y="80" width="1048" height="945" key="CommitChangelistDialog2" timestamp="1575468769640">
       <screen x="67" y="27" width="1853" height="1053" />
     </state>
-    <state width="1797" height="105" key="GridCell.Tab.0.bottom/67.27.1853.1053/1920.0.1366.768@67.27.1853.1053" timestamp="1575468420810" />
-    <state width="1797" height="105" key="GridCell.Tab.0.center" timestamp="1575468420810">
+    <state x="464" y="80" width="1048" height="945" key="CommitChangelistDialog2/67.27.1853.1053/1920.0.1366.768@67.27.1853.1053" timestamp="1575468769640" />
+    <state width="1797" height="410" key="GridCell.Tab.0.bottom" timestamp="1575986978165">
       <screen x="67" y="27" width="1853" height="1053" />
     </state>
-    <state width="1797" height="105" key="GridCell.Tab.0.center/67.27.1853.1053/1920.0.1366.768@67.27.1853.1053" timestamp="1575468420810" />
-    <state width="1797" height="105" key="GridCell.Tab.0.left" timestamp="1575468420810">
+    <state width="1797" height="410" key="GridCell.Tab.0.bottom/67.27.1853.1053/1920.0.1366.768@67.27.1853.1053" timestamp="1575986978165" />
+    <state width="1797" height="410" key="GridCell.Tab.0.center" timestamp="1575986978164">
       <screen x="67" y="27" width="1853" height="1053" />
     </state>
-    <state width="1797" height="105" key="GridCell.Tab.0.left/67.27.1853.1053/1920.0.1366.768@67.27.1853.1053" timestamp="1575468420810" />
-    <state width="1797" height="105" key="GridCell.Tab.0.right" timestamp="1575468420810">
+    <state width="1797" height="410" key="GridCell.Tab.0.center/67.27.1853.1053/1920.0.1366.768@67.27.1853.1053" timestamp="1575986978164" />
+    <state width="1797" height="410" key="GridCell.Tab.0.left" timestamp="1575986978164">
       <screen x="67" y="27" width="1853" height="1053" />
     </state>
-    <state width="1797" height="105" key="GridCell.Tab.0.right/67.27.1853.1053/1920.0.1366.768@67.27.1853.1053" timestamp="1575468420810" />
-    <state width="1797" height="105" key="GridCell.Tab.1.bottom" timestamp="1575468420810">
+    <state width="1797" height="410" key="GridCell.Tab.0.left/67.27.1853.1053/1920.0.1366.768@67.27.1853.1053" timestamp="1575986978164" />
+    <state width="1797" height="410" key="GridCell.Tab.0.right" timestamp="1575986978165">
       <screen x="67" y="27" width="1853" height="1053" />
     </state>
-    <state width="1797" height="105" key="GridCell.Tab.1.bottom/67.27.1853.1053/1920.0.1366.768@67.27.1853.1053" timestamp="1575468420810" />
-    <state width="1797" height="105" key="GridCell.Tab.1.center" timestamp="1575468420810">
+    <state width="1797" height="410" key="GridCell.Tab.0.right/67.27.1853.1053/1920.0.1366.768@67.27.1853.1053" timestamp="1575986978165" />
+    <state width="1797" height="410" key="GridCell.Tab.1.bottom" timestamp="1575986978165">
       <screen x="67" y="27" width="1853" height="1053" />
     </state>
-    <state width="1797" height="105" key="GridCell.Tab.1.center/67.27.1853.1053/1920.0.1366.768@67.27.1853.1053" timestamp="1575468420810" />
-    <state width="1797" height="105" key="GridCell.Tab.1.left" timestamp="1575468420810">
+    <state width="1797" height="410" key="GridCell.Tab.1.bottom/67.27.1853.1053/1920.0.1366.768@67.27.1853.1053" timestamp="1575986978165" />
+    <state width="1797" height="410" key="GridCell.Tab.1.center" timestamp="1575986978165">
       <screen x="67" y="27" width="1853" height="1053" />
     </state>
-    <state width="1797" height="105" key="GridCell.Tab.1.left/67.27.1853.1053/1920.0.1366.768@67.27.1853.1053" timestamp="1575468420810" />
-    <state width="1797" height="105" key="GridCell.Tab.1.right" timestamp="1575468420810">
+    <state width="1797" height="410" key="GridCell.Tab.1.center/67.27.1853.1053/1920.0.1366.768@67.27.1853.1053" timestamp="1575986978165" />
+    <state width="1797" height="410" key="GridCell.Tab.1.left" timestamp="1575986978165">
       <screen x="67" y="27" width="1853" height="1053" />
     </state>
-    <state width="1797" height="105" key="GridCell.Tab.1.right/67.27.1853.1053/1920.0.1366.768@67.27.1853.1053" timestamp="1575468420810" />
+    <state width="1797" height="410" key="GridCell.Tab.1.left/67.27.1853.1053/1920.0.1366.768@67.27.1853.1053" timestamp="1575986978165" />
+    <state width="1797" height="410" key="GridCell.Tab.1.right" timestamp="1575986978165">
+      <screen x="67" y="27" width="1853" height="1053" />
+    </state>
+    <state width="1797" height="410" key="GridCell.Tab.1.right/67.27.1853.1053/1920.0.1366.768@67.27.1853.1053" timestamp="1575986978165" />
     <state width="1797" height="326" key="GridCell.Tab.2.bottom" timestamp="1575359733471">
       <screen x="67" y="27" width="1853" height="1053" />
     </state>
@@ -279,10 +301,14 @@
       <screen x="67" y="27" width="1853" height="1053" />
     </state>
     <state width="1797" height="326" key="GridCell.Tab.2.right/67.27.1853.1053/1920.0.1366.768@67.27.1853.1053" timestamp="1575359733471" />
-    <state x="573" y="342" key="com.intellij.ide.util.TipDialog" timestamp="1575335717612">
+    <state x="488" y="225" width="1000" height="654" key="Vcs.Push.Dialog.v2" timestamp="1575468782632">
       <screen x="67" y="27" width="1853" height="1053" />
     </state>
-    <state x="573" y="342" key="com.intellij.ide.util.TipDialog/67.27.1853.1053/1920.0.1366.768@67.27.1853.1053" timestamp="1575335717612" />
+    <state x="488" y="225" width="1000" height="654" key="Vcs.Push.Dialog.v2/67.27.1853.1053/1920.0.1366.768@67.27.1853.1053" timestamp="1575468782632" />
+    <state x="573" y="342" key="com.intellij.ide.util.TipDialog" timestamp="1576027650674">
+      <screen x="67" y="27" width="1853" height="1053" />
+    </state>
+    <state x="573" y="342" key="com.intellij.ide.util.TipDialog/67.27.1853.1053/1920.0.1366.768@67.27.1853.1053" timestamp="1576027650674" />
     <state x="573" y="249" key="run.anything.popup" timestamp="1575462420815">
       <screen x="67" y="27" width="1853" height="1053" />
     </state>

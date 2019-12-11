@@ -51,7 +51,7 @@
         <div class="item">
             <div class="item_top item_top2">
                 <div class="item_pic">
-                    <img width="300" src="../img/pic2.png" th:src="${college.getImg()}"/>
+                    <img  src="../img/pic2.png" />
                 </div>
                 <div class="item_topic">
                     <h1 th:text="${college.name}"></h1>
@@ -93,7 +93,7 @@
                     学院简介
                 </div>
                 <div class="abstract">
-                    <p class="con" th:text="${college.getIntroduction().substring(0,295)}+'...'"></p>
+                    <p class="con" th:text="${college.getIntroduction().substring(0,270)}+'...'"></p>
                     <a  th:href="@{${college.getIntroductionLink()}}"> 阅读详情</a>
                 </div>
                 <div class="picScroll-left picScroll-left2">
@@ -104,9 +104,9 @@
                     <div class="bd">
                         <ul class="picList">
                             <li th:each="teacher : ${teachers}">
-                                <div class="pic"><a href="#" target="_blank"><img src="../img/shi1.png" th:src="@{'http://faculty.hust.edu.cn/'+${teacher.getImg()}}"/></a></div>
+                                <div class="pic"><a href="" th:href="'../searchTeacher/searchById?id='+${teacher.getId()}" target="_blank"><img src="../img/shi1.png" th:src="@{'http://faculty.hust.edu.cn/'+${teacher.getImg()}}"/></a></div>
                                 <div class="title">
-                                    <a href="#" target="_blank">
+                                    <a href="#"th:href="'../searchTeacher/searchById?id='+${teacher.getId()}" target="_blank">
                                         <h6 th:text="${teacher.getName()}"></h6>
                                         <p th:text="${teacher.getProrank()}"></p>
                                     </a>
@@ -202,32 +202,16 @@
 
             </ul>
         </div>
-        <!--教师动态-->
+        <!--学院动态-->
         <div class="active lab2">
             <div class="titles">
-                <p>教师动态</p>
-                <h4>274名新进教职工参加岗前培训暨师德师风教育活动</h4>
+                <p>学院动态</p>
+                <h4 th:text="${college.getName()}">274名新进教职工参加岗前培训暨师德师风教育活动</h4>
             </div>
             <ul class="acti_list">
-                <li>
-                    <a href="#">暑期工作会议师生凝聚共识加快内涵发展实施倍增计划</a>
-                    <span>2019-09-02</span>
-                </li>
-                <li>
-                    <a href="#">暑期工作会议师生凝聚共识加快内涵发展实施倍增计划</a>
-                    <span>2019-09-02</span>
-                </li>
-                <li>
-                    <a href="#">暑期工作会议师生凝聚共识加快内涵发展实施倍增计划</a>
-                    <span>2019-09-02</span>
-                </li>
-                <li>
-                    <a href="#">暑期工作会议师生凝聚共识加快内涵发展实施倍增计划</a>
-                    <span>2019-09-02</span>
-                </li>
-                <li>
-                    <a href="#">计算机学院组织研究生赴西柏坡、雄安新区和白洋淀开展“新中国从这里走来”主题...</a>
-                    <span>2019-09-02</span>
+                <li th:each="news :${webnewsList}">
+                    <a href="#"th:href="${news.getLink()}" th:text="${news.getTitle()}">暑期工作会议师生凝聚共识加快内涵发展实施倍增计划</a>
+                    <span th:text="${news.getDate().toString().substring(0,10)}">2019-09-02</span>
                 </li>
             </ul>
         </div>

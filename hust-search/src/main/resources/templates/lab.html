@@ -42,7 +42,7 @@
 		<div th:each="lab : ${pageInfo.getList()}" class="cont">
 			<div class="search2">
 				<form action="/searchLab/page/1/1" method="get">
-				    <input type="text" name="" class="inp" th:placeholder="${lab.getName()}">
+				    <input type="text" name="labName" class="inp" th:placeholder="${lab.getName()}">
 					<input type="submit" name="submit" value="点击搜索" class="btn">
 				</form>
 			</div>
@@ -71,7 +71,7 @@
 								</li>
 								<li class="i4">
 									<h6>地址</h6>
-									<span th:text="${lab.getAddress()}">湖北省武汉市洪山区珞喻路1037号</span>
+									<span th:text="${#httpServletRequest.getContextPath()}">湖北省武汉市洪山区珞喻路1037号</span>
 								</li>
 								<li class="i5 oli_last">
 									<h6>研究领域</h6>
@@ -96,7 +96,7 @@
 撑。主要研究领域包括：电力电子化电力系统稳定性分析理论与控制方法、故障分析理论及保护方法等。中心建立了适用于电力电子化电力系统动态分析的幅频动力学体系（基于幅频运动方程的不同尺度设备和网络建
 模理论、基于自稳性/致稳性的动态相互作用分析方法、以及基于广义稳定器的稳定控制方法）。未来将在实践中不断完善和丰富幅频动力学理论和方法，引领国际相关学术研究的方向和思路...		             
 							</p>
-							<a href="#"> 阅读详情</a>
+							<a href="#" th:href="${lab.getIntroductionLink()}"> 阅读详情</a>
 						</div>
 						<div class="picScroll-left">
 							<div class="hd">
@@ -106,11 +106,11 @@
 							<div class="bd">
 								<ul class="picList">
 									<li th:each="teacher : ${teacherMap[__${lab.getId()}__]}">
-										<div class="pic"><a href="#" target="_blank"><img th:src="@{'http://faculty.hust.edu.cn/'+${teacher.getImg()}}" src="../img/pic1.png" /></a></div>
+										<div class="pic"><a href="" th:href="'../searchTeacher/searchById?id='+${teacher.getId()}" target="_blank"><img src="../img/shi1.png" th:src="@{'http://faculty.hust.edu.cn/'+${teacher.getImg()}}"/></a></div>
 										<div class="title">
-											<a href="#" target="_blank">
+											<a href="#" th:href="'../searchTeacher/searchById?id='+${teacher.getId()}" target="_blank">
 												<h6 th:text="${teacher.getName()}">袁小明</h6>
-												<p th:text="|${teacher.getProrank()}| + '  '+ ${teacher.getDtutor()}">教授&nbsp;&nbsp;博士生导师</p>
+												<p th:text="|${teacher.getProrank()}| + '  '+ ${teacher.getTutor()}">教授&nbsp;&nbsp;博士生导师</p>
 											</a>
 										</div>
 									</li>
@@ -127,49 +127,25 @@
 				<div class="active active2">
 					<div class="titles">
 						<p>研究成果</p>
-						<h4>异步电机机电时间尺度有效惯量评估及其对可再生能源并网系统频率动态的影响</h4>
+						<h4 th:text="${lab.getName()}">异步电机机电时间尺度有效惯量评估及其对可再生能源并网系统频率动态的影响</h4>
 					</div>
+
 					<ul class="acti_list">
-						<li>
-							<a href="#">暑期工作会议师生凝聚共识加快内涵发展实施倍增计划</a>
-							<span>2019-09-02</span>
-						</li>
-						<li>
-							<a href="#">暑期工作会议师生凝聚共识加快内涵发展实施倍增计划</a>
-							<span>2019-09-02</span>
-						</li>
-						<li>
-							<a href="#">暑期工作会议师生凝聚共识加快内涵发展实施倍增计划</a>
-							<span>2019-09-02</span>
-						</li>
-						<li>
-							<a href="#">暑期工作会议师生凝聚共识加快内涵发展实施倍增计划</a>
-							<span>2019-09-02</span>
+						<li th:each="researchResult : ${researchResultMap[__${lab.getId()}__]}">
+							<a th:href="${researchResult.getLink()}" href="#" th:text="${#strings.abbreviate(researchResult.getTitle(),80)}"}>暑期工作会议师生凝聚共识加快内涵发展实施倍增计划</a>
 						</li>
 					</ul>
 				</div>
 				<!--教师动态-->
 				<div class="active">
 					<div class="titles">
-						<p>教师动态</p>
-						<h4>274名新进教职工参加岗前培训暨师德师风教育活动</h4>
+						<p>实验室动态</p>
+						<h4 th:text="${lab.getName()}">274名新进教职工参加岗前培训暨师德师风教育活动</h4>
 					</div>
 					<ul class="acti_list">
-						<li>
-							<a href="#">暑期工作会议师生凝聚共识加快内涵发展实施倍增计划</a>
-							<span>2019-09-02</span>
-						</li>
-						<li>
-							<a href="#">暑期工作会议师生凝聚共识加快内涵发展实施倍增计划</a>
-							<span>2019-09-02</span>
-						</li>
-						<li>
-							<a href="#">暑期工作会议师生凝聚共识加快内涵发展实施倍增计划</a>
-							<span>2019-09-02</span>
-						</li>
-						<li>
-							<a href="#">暑期工作会议师生凝聚共识加快内涵发展实施倍增计划</a>
-							<span>2019-09-02</span>
+						<li th:each="news :${webnewsHashMap[__${lab.getId()}__]}">
+							<a href="#"th:href="${news.getLink()}" th:text="${news.getTitle()}">暑期工作会议师生凝聚共识加快内涵发展实施倍增计划</a>
+							<span th:text="${news.getDate().toString().substring(0,10)}">2019-09-02</span>
 						</li>
 					</ul>
 				</div>

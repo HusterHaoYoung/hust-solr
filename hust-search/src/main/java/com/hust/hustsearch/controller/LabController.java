@@ -1,9 +1,6 @@
 package com.hust.hustsearch.controller;
 
-import com.hust.hustsearch.dao.LabDao;
-import com.hust.hustsearch.dao.ResearchDirectionDao;
-import com.hust.hustsearch.dao.ResearchResultDao;
-import com.hust.hustsearch.dao.TeacherDao;
+import com.hust.hustsearch.dao.*;
 import com.hust.hustsearch.entity.*;
 import com.hust.hustsearch.service.LabSearchService;
 import org.apache.solr.client.solrj.SolrServerException;
@@ -37,6 +34,8 @@ public class LabController {
     private ResearchResultDao researchResultDao;
     @Autowired
     private TeacherDao teacherDao;
+    @Autowired
+    private WebnewsDao webnewsDao;
     @RequestMapping("initAllData")
     @ResponseBody
     public String initAllLabData() throws IOException, SolrServerException {
@@ -47,21 +46,23 @@ public class LabController {
     @GetMapping("page/{pageIndex}/{pageSize}")
     public String searchLabNamePage(@PathVariable("pageIndex") Integer pageIndex, @PathVariable("pageSize") Integer pageSize, String labName, Model model) {
         System.out.println("---------------" + pageIndex + "---" + pageSize + "----" + labName);
-
         PageResultBean<Lab> labPageResultBean = labSearchService.searchByLabName(labName, pageIndex, pageSize);
         System.out.println("---size=" + labPageResultBean.getList().size());
         HashMap<Integer, List<ResearchDirection>> hashMap = new HashMap<>();
         HashMap<Integer,List<Teacher>> hashMap1 = new HashMap<>();
         HashMap<Integer,List<ResearchResult>> researchResultMap = new HashMap<>();
+        HashMap<Integer,List<Webnews>> webnewsHashMap = new HashMap<>();
         for (Lab l : labPageResultBean.getList()) {
             hashMap.put(l.getId(), researchDirectionDao.findByLabId(l.getId()));
             hashMap1.put(l.getId(),teacherDao.findByLabId(l.getId()));
             researchResultMap.put(l.getId(),researchResultDao.findByLabId(l.getId()));
+            webnewsHashMap.put(l.getId(),webnewsDao.findByWid("l" + l.getId(), 5));
         }
         model.addAttribute("pageInfo", labPageResultBean);
         model.addAttribute("hashMap", hashMap);
         model.addAttribute("teacherMap",hashMap1);
         model.addAttribute("researchResultMap",researchResultMap);
+        model.addAttribute("webnewsHashMap",webnewsHashMap);
         return "lab";
     }
 }
