@@ -2,12 +2,10 @@ package com.hust.hustsearch.controller;
 
 
 import com.hust.hustsearch.dao.LabDao;
+import com.hust.hustsearch.dao.ProvinceDao;
 import com.hust.hustsearch.dao.TeacherDao;
 import com.hust.hustsearch.dao.WebnewsDao;
-import com.hust.hustsearch.entity.College;
-import com.hust.hustsearch.entity.Lab;
-import com.hust.hustsearch.entity.Teacher;
-import com.hust.hustsearch.entity.Webnews;
+import com.hust.hustsearch.entity.*;
 import com.hust.hustsearch.service.CollegeSearchService;
 import org.apache.solr.client.solrj.SolrServerException;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -38,6 +36,8 @@ public class CollegeController {
     private LabDao labDao;
     @Autowired
     private WebnewsDao webnewsDao;
+    @Autowired
+    private ProvinceDao provinceDao;
 
     @RequestMapping("initAllData")
     @ResponseBody
@@ -54,10 +54,12 @@ public class CollegeController {
         List<Teacher> teachers = teacherDao.findByCollegeId(college.getId());
         List<Lab> labs = labDao.findByCollegeId(college.getId(), 10);
         List<Webnews> webnewsList = webnewsDao.findByWid("c" + college.getId(), 5);
+        List<Province> provinces = provinceDao.findAll();
         model.addAttribute("college", college);
         model.addAttribute("teachers", teachers);
         model.addAttribute("labs", labs);
         model.addAttribute("webnewsList",webnewsList);
+        model.addAttribute("provinces",provinces);
         return "college";
     }
 }

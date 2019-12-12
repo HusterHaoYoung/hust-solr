@@ -14,6 +14,6 @@ import java.util.List;
  * @date : 12/4/19  9:37 PM
  */
 public interface ResearchResultDao extends JpaRepository<ResearchResult, Integer> {
-    @Query(value = "select rr.id , rr.title,rr.link from research_result rr , lab_result lr where  lr.lab_id = :labId  AND  lr.rid = rr.id",nativeQuery = true)
-    List<ResearchResult> findByLabId(@Param("labId") int labId);
+    @Query(value = "select rr.id , rr.title,rr.link from research_result rr , lab_result lr where  lr.lab_id = :labId  AND  lr.rid = rr.id limit :num",nativeQuery = true)
+    List<ResearchResult> findByLabId(@Param("labId") int labId,@Param("num") int num);
 }

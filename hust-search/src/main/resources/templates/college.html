@@ -25,16 +25,16 @@
             <li class="other">
                 <a href="#" class="icon2">院<span></span>系</a>
             </li>
-            <li>
-                <a href="#" class=" icon3">联系我们</a>
-            </li>
-            <li>
-                <a href="#" class="icon4">关于主页</a>
-            </li>
+<!--            <li>-->
+<!--                <a href="#" class=" icon3">联系我们</a>-->
+<!--            </li>-->
+<!--            <li>-->
+<!--                <a href="#" class="icon4">关于主页</a>-->
+<!--            </li>-->
         </ul>
         <div class="visit">
-            <p class="all"><span>总访问量</span>：1042.50万</p>
-            <p class="today">今日访问量：2222223376</p>
+<!--            <p class="all"><span>总访问量</span>：1042.50万</p>-->
+<!--            <p class="today">今日访问量：2222223376</p>-->
         </div>
     </div>
 </div>
@@ -43,46 +43,43 @@
     <div class="search2">
         <form action="searchByKeyWord" method="post">
             <input type="text" name="keyWord" class="inp" th:placeholder="${college.getName()}">
-			<input type="submit" name="submit" value="点击搜索" class="btn">
+            <input type="submit" name="submit" value="点击搜索" class="btn">
         </form>
     </div>
     <!--研究团队-->
     <div class="research intro">
         <div class="item">
             <div class="item_top item_top2">
-                <div class="item_pic">
-                    <img  src="../img/pic2.png" />
-                </div>
+
                 <div class="item_topic">
-                    <h1 th:text="${college.name}"></h1>
-                    <p th:text="${college.getEnglishName()}"></p>
+                    <h1 th:text="${college.getName()}"></h1>
+                    <p th:text="${college.getEnglishName()}">School of Computer Science &amp; Technology,HUST</p>
                     <ul>
                         <li class="colle1">
                             <h6>电话</h6>
-                            <span th:text="${college.getPhone()}"></span>
+                            <span th:text="${college.getPhone()}">027-87543684</span>
                         </li>
                         <li class="colle2">
                             <h6>邮箱</h6>
-                            <span th:text="${college.getEmail()}"></span>
+                            <span th:text="${college.getEmail()}">jsjxy@hust.edu.cn</span>
                         </li>
                         <li class="colle3">
                             <h6>地址</h6>
-                            <span th:text="${college.getAddress()}"></span>
+                            <span th:text="${college.getAddress()}">中国·湖北省·武汉市·</span>
                         </li>
                         <li class="colle4">
                             <h6>官网</h6>
-                            <span th:text="${college.getIndex()}"></span>
+                            <span th:text="${college.getIndex()}">www.cs.hust.edu.cn/</span>
                         </li>
+                        <div class="clear"></div>
                         <li class="colle5 coll_last">
                             <h6>招生专业</h6>
                             <ul class="zhao">
                                 <li>
-                                    <img src="../img/z1.png"/>
+                                    计算机科学与技术
                                 </li>
-                                <li>
-                                    <img src="../img/z2.png"/>
-                                </li>
-                            </ul>
+                            </ul></li>
+                        <div class="clear"></div>
                     </ul>
                 </div>
                 <div class="clear"></div>
@@ -93,26 +90,32 @@
                     学院简介
                 </div>
                 <div class="abstract">
-                    <p class="con" th:text="${college.getIntroduction().substring(0,270)}+'...'"></p>
-                    <a  th:href="@{${college.getIntroductionLink()}}"> 阅读详情</a>
+                    <p class="con" th:text="${#strings.abbreviate(college.getIntroduction(),270)}">
+                    </p>
+                    <a href="#" th:href="@{${college.getIntroductionLink()}}"> 阅读详情</a>
                 </div>
                 <div class="picScroll-left picScroll-left2">
                     <div class="hd">
-                        <a class="prev"></a>
                         <a class="next"></a>
+                        <a class="prev prevStop"></a>
                     </div>
                     <div class="bd">
-                        <ul class="picList">
-                            <li th:each="teacher : ${teachers}">
-                                <div class="pic"><a href="" th:href="'../searchTeacher/searchById?id='+${teacher.getId()}" target="_blank"><img src="../img/shi1.png" th:src="@{'http://faculty.hust.edu.cn/'+${teacher.getImg()}}"/></a></div>
+                        <div class="tempWrap" style="overflow:hidden; position:relative; width:1248px"><ul class="picList" style="width: 2080px; left: 0px; position: relative; overflow: hidden; padding: 0px; margin: 0px;">
+
+                            <li style="float: left; width: 133px;" th:each="teacher : ${teachers}">
+                                <div class="pic"><a href=""
+                                                    th:href="'../searchTeacher/searchById?id='+${teacher.getId()}"
+                                                    target="_blank"><img src="../img/shi1.png"
+                                                                         th:src="@{'http://faculty.hust.edu.cn/'+${teacher.getImg()}}"/></a></div>
                                 <div class="title">
-                                    <a href="#"th:href="'../searchTeacher/searchById?id='+${teacher.getId()}" target="_blank">
-                                        <h6 th:text="${teacher.getName()}"></h6>
-                                        <p th:text="${teacher.getProrank()}"></p>
+                                    <a href="#" target="_blank" th:href="'../searchTeacher/searchById?id='+${teacher.getId()}">
+                                        <h6 th:text="${teacher.getName()}">陈汉华</h6>
+                                        <p th:text="${teacher.getProrank()}">教授&nbsp;&nbsp;博士生导师</p>
                                     </a>
                                 </div>
                             </li>
-                        </ul>
+
+                        </ul></div>
                     </div>
                 </div>
             </div>
@@ -127,39 +130,31 @@
         <ul class="sel">
             <li>
                 <h5>省/市</h5>
-                <select name="jumpMenu" id="jumpMenu"
-                        onchange="if(this.value.length>0)window.open(this.value,'_blank');">
-                    <option value="">北京市</option>
-                    <option value="">北京市</option>
-                    <option value="">北京市</option>
-                    <option value="">北京市</option>
+                <select name="province" id="jumpMenuPro">
+                    <option th:each="pro:${provinces}" th:value="${pro.getName()}" th:text="${pro.getName()}">北京市
+                    </option>
                 </select>
             </li>
             <li class="li2">
                 <h5>科别</h5>
-                <select name="jumpMenu" id="jumpMenu"
-                        onchange="if(this.value.length>0)window.open(this.value,'_blank');">
-                    <option value="">理工</option>
-                    <option value="">理工</option>
-                    <option value="">理工</option>
-                    <option value="">理工</option>
+                <select name="branch" id="jumpMenuBran">
+                    <option value="理工">理工</option>
+                    <option value="文史">文史</option>
+                    <option value="综合改革">综合改革</option>
                 </select>
             </li>
             <li class="li2">
                 <h5>年份</h5>
-                <select name="jumpMenu" id="jumpMenu"
-                        onchange="if(this.value.length>0)window.open(this.value,'_blank');">
-                    <option value="">2018</option>
-                    <option value="">2018</option>
-                    <option value="">2018</option>
-                    <option value="">2018</option>
+                <select name="jumpMenu" id="jumpMenuYear">
+                    <option value="2018">2018</option>
+                    <option value="2017">2017</option>
                 </select>
             </li>
 
             <li class="clear"></li>
         </ul>
-        <form action="" method="post" class="formed">
-            <input src="submit" value="点击查询"/>
+        <form action="#" method="post" class="formed">
+            <input type="submit" value="点击查询"/>
         </form>
         <div class="clear"></div>
         <table border="0" width="1420" cellspacing="0" cellpadding="0" class="tabed">
@@ -176,13 +171,6 @@
                 <td>北京市</td>
                 <td>668</td>
                 <td></td>
-            </tr>
-            <tr>
-                <td>计算机类</td>
-                <td>2018</td>
-                <td>北京市</td>
-                <td>659</td>
-                <td>计算机科学与技术、信息安全、物联网工程</td>
             </tr>
         </table>
     </div>
@@ -210,8 +198,8 @@
             </div>
             <ul class="acti_list">
                 <li th:each="news :${webnewsList}">
-                    <a href="#"th:href="${news.getLink()}" th:text="${news.getTitle()}">暑期工作会议师生凝聚共识加快内涵发展实施倍增计划</a>
-                    <span th:text="${news.getDate().toString().substring(0,10)}">2019-09-02</span>
+                    <a href="#" th:href="${news.getLink()}" th:text="${news.getTitle()}">暑期工作会议师生凝聚共识加快内涵发展实施倍增计划</a>
+                    <span th:text="${#strings.abbreviate(news.getDate().toString(),10)}">2019-09-02</span>
                 </li>
             </ul>
         </div>
@@ -246,6 +234,26 @@
         vis: 6,
         pnLoop: false
     });
+
+    function score() {
+        $.ajax({
+            //几个参数需要注意一下
+            type: "GET",//方法类型
+            dataType: "json",//预期服务器返回的数据类型
+            url: "/score/getScore",//url
+            data: {"provinceId": ""},
+            success: function (result) {
+                console.log(result);//打印服务端返回的数据(调试用)
+                if (result.resultCode == 200) {
+                    alert("SUCCESS");
+                }
+                ;
+            },
+            error: function () {
+                alert("异常！");
+            }
+        });
+    }
 </script>
 </body>
 </html>

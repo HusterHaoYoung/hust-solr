@@ -55,8 +55,8 @@ public class LabController {
         for (Lab l : labPageResultBean.getList()) {
             hashMap.put(l.getId(), researchDirectionDao.findByLabId(l.getId()));
             hashMap1.put(l.getId(),teacherDao.findByLabId(l.getId()));
-            researchResultMap.put(l.getId(),researchResultDao.findByLabId(l.getId()));
-            webnewsHashMap.put(l.getId(),webnewsDao.findByWid("l" + l.getId(), 5));
+            researchResultMap.put(l.getId(),researchResultDao.findByLabId(l.getId(),4));
+            webnewsHashMap.put(l.getId(),webnewsDao.findByWid("l" + l.getId(), 4));
         }
         model.addAttribute("pageInfo", labPageResultBean);
         model.addAttribute("hashMap", hashMap);

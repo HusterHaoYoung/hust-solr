@@ -28,16 +28,16 @@
             <li class="other">
                 <a href="#" class="icon2">院<span></span>系</a>
             </li>
-            <li>
-                <a href="#" class=" icon3">联系我们</a>
-            </li>
-            <li>
-                <a href="#" class="icon4">关于主页</a>
-            </li>
+<!--            <li>-->
+<!--                <a href="#" class=" icon3">联系我们</a>-->
+<!--            </li>-->
+<!--            <li>-->
+<!--                <a href="#" class="icon4">关于主页</a>-->
+<!--            </li>-->
         </ul>
         <div class="visit">
-            <p class="all"><span>总访问量</span>：1042.50万</p>
-            <p class="today">今日访问量：23376</p>
+<!--            <p class="all"><span>总访问量</span>：1042.50万</p>-->
+<!--            <p class="today">今日访问量：23376</p>-->
         </div>
     </div>
 </div>
@@ -103,9 +103,8 @@
             <ul>
                 <li>
                     <h6>研究方向</h6>
-                    <h6 th:each="research : ${hashmap[__${teacher.getId()}__]}">
                         <!--                <li th:each="lab : ${labs}">-->
-                        <span th:text="'-  '+${research.getName()}">-  可再生能源发电设备及其控制等</span><br>
+                        <span th:each="research : ${hashmap[__${teacher.getId()}__]}" th:text="'-  '+${research.getName()}">-  可再生能源发电设备及其控制等</span><br>
                     </h6>
                     <!--                    <span class="second">-  直流输电系统及其控制</span><br>-->
                     <!--                    <span class="second">-  多发电机多变流器电力系统稳定与控制</span> <br>-->

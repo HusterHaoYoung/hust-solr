@@ -17,6 +17,7 @@ import org.apache.solr.common.SolrInputDocument;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.management.Query;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
@@ -81,6 +82,12 @@ public class CollegeSearchService implements ISearchService {
         try {
             QueryResponse response = solrClient.query(query);
             SolrDocumentList list = response.getResults();
+            if(list.size() == 0){
+                SolrQuery q2 = new SolrQuery();
+                q2.setQuery("college_name:*");
+                QueryResponse response1 = solrClient.query(q2);
+                list = response1.getResults();
+            }
             for (int i = 0; i < 1; i++) {
                 college.setId(Integer.parseInt(list.get(i).getFieldValue("id").toString()));
                 if (list.get(i).getFieldValue("college_name") != null) {

@@ -57,11 +57,16 @@ public class TeacherController {
         PageResultBean<Teacher> teachers = teacherSearchService.searchByTeacherName(teacherName, pageIndex, pageSize);
         System.out.println("---size=" + teachers.getList().size());
         HashMap<Integer, List<ResearchDirection>> hashMap = new HashMap<>();
+        HashMap<Integer, List<Webnews>> webnewsHashMap = new HashMap<>();
         for (Teacher t : teachers.getList()) {
             hashMap.put(t.getId(), researchDirectionDao.findByTeacherId(t.getId()));
+            webnewsHashMap.put(t.getId(), webnewsDao.findByWid("l" + t.getLabId(), 5));
+
         }
         model.addAttribute("pageInfo", teachers);
         model.addAttribute("hashmap", hashMap);
+        model.addAttribute("webnewsHashMap", webnewsHashMap);
+
         return "teacher";
     }
 
